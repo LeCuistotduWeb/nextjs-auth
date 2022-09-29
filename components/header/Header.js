@@ -15,23 +15,31 @@ const Header = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <nav className="navbar">
+        <ul className="nav">
+          <li className="nav-item">
+            <Link href="/"><a className="navbar-brand nav-link ps-0">Nextjs-Auth</a></Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/properties"><a className={`nav-link ${router.pathname === '/properties' ? 'active' : ''}`}>Properties</a></Link>
+          </li>
+          <li className={`nav-item`}>
+            <Link href="/profile"><a className={`nav-link ${router.pathname === '/profile' ? 'active' : ''}`}>Profile</a></Link>
+          </li>
+          {isAuthenticated && user.role === 'admin' && (
+            <li className={`nav-item`}>
+              <Link href="/dashboard"><a className={`nav-link ${router.pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</a></Link>
+            </li>
+          )}
+        </ul>
+
+        <div className="d-flex align-items-center gap-3">
           <ul className="nav">
             <li className="nav-item">
-              <Link href="/"><a className="navbar-brand nav-link ps-0">Nextjs-Auth</a></Link>
+            <Link href="/contact">
+              <a className={`nav-link ${router.pathname === '/contact' ? 'active' : ''}`}>Contact</a>
+            </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/properties"><a className={`nav-link ${router.pathname === '/properties' ? 'active' : ''}`}>Properties</a></Link>
-            </li>
-            <li className={`nav-item`}>
-              <Link href="/profile"><a className={`nav-link ${router.pathname === '/profile' ? 'active' : ''}`}>Profile</a></Link>
-            </li>
-            {isAuthenticated && user.role === 'admin' && (
-              <li className={`nav-item`}>
-                <Link href="/dashboard"><a className={`nav-link ${router.pathname === '/dashboard' ? 'active' : ''}`}>Dashboard</a></Link>
-              </li>
-            )}
           </ul>
-
           {isAuthenticated ? (
             <div>
               <span>{user.username}</span>
@@ -42,6 +50,7 @@ const Header = (props) => {
               <span><Link href="/login"><a className="btn btn-primary btn-sm">Login</a></Link></span>
             </div>
           )}
+        </div>
       </nav>
     </header>
   )

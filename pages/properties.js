@@ -3,6 +3,7 @@ import DefaultLayout from "../components/layout/DefaultLayout";
 import api from "../auth/axios";
 import PropertyCard from "../components/properties/PropertyCard";
 import PaginationBasic from "../components/pagination/Pagination";
+import SearchFilter from "../components/search-filter/SearchFilter";
 
 export default function HomePage(props) {
   const {properties, currentPage, pageCount, data} =  props
@@ -10,6 +11,11 @@ export default function HomePage(props) {
     <DefaultLayout>
       <div className="row">
         <div className="col-12">
+
+          <div className="row">
+            <SearchFilter/>
+          </div>
+
           <div className="row">
             {properties.map(property =>(
               <div className="col-12" key={property.id}>
