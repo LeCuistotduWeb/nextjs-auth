@@ -19,6 +19,9 @@ const Header = (props) => {
             <li className="nav-item">
               <Link href="/"><a className="navbar-brand nav-link ps-0">Nextjs-Auth</a></Link>
             </li>
+            <li className="nav-item">
+              <Link href="/properties"><a className={`nav-link ${router.pathname === '/properties' ? 'active' : ''}`}>Properties</a></Link>
+            </li>
             <li className={`nav-item`}>
               <Link href="/profile"><a className={`nav-link ${router.pathname === '/profile' ? 'active' : ''}`}>Profile</a></Link>
             </li>
